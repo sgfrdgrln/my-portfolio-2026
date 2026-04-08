@@ -412,30 +412,28 @@ export default function Home() {
           <div className="grid gap-5 md:grid-cols-2">
             {projects.map((project) => (
               <GlassCard key={project.title} className="overflow-hidden">
-                <div className="rounded-xl border border-white/10 bg-gradient-to-b from-white/10 to-transparent p-4">
-                  <h3 className="text-lg font-semibold text-white">{project.title}</h3>
-                  <p className="mt-2 text-sm leading-7 text-zinc-300">{project.description}</p>
+                <h3 className="text-lg font-semibold text-white">{project.title}</h3>
+                <p className="mt-2 text-sm leading-7 text-zinc-300">{project.description}</p>
 
-                  <div className="mt-4 flex flex-wrap gap-2">
-                    {project.stack.map((item) => (
-                      <TechBadge key={`${project.title}-${item}`} label={item} />
-                    ))}
-                  </div>
+                <div className="mt-4 flex flex-wrap gap-2">
+                  {project.stack.map((item) => (
+                    <TechBadge key={`${project.title}-${item}`} label={item} />
+                  ))}
+                </div>
 
-                  <div className="mt-5 flex gap-3">
-                    <a
-                      href={project.demoUrl}
-                      className="rounded-lg border border-blue-300/30 bg-blue-500/20 px-3 py-2 text-xs font-semibold text-blue-100 transition hover:bg-blue-500/35"
-                    >
-                      Live Demo
-                    </a>
-                    <a
-                      href={project.githubUrl}
-                      className="rounded-lg border border-white/15 bg-white/5 px-3 py-2 text-xs font-semibold text-zinc-100 transition hover:bg-white/10"
-                    >
-                      GitHub
-                    </a>
-                  </div>
+                <div className="mt-5 flex gap-3">
+                  <a
+                    href={project.demoUrl}
+                    className="rounded-lg border border-blue-300/30 bg-blue-500/20 px-3 py-2 text-xs font-semibold text-blue-100 transition hover:bg-blue-500/35"
+                  >
+                    Live Demo
+                  </a>
+                  <a
+                    href={project.githubUrl}
+                    className="rounded-lg border border-white/15 bg-white/5 px-3 py-2 text-xs font-semibold text-zinc-100 transition hover:bg-white/10"
+                  >
+                    GitHub
+                  </a>
                 </div>
               </GlassCard>
             ))}
