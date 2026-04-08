@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from "react";
 import Image from "next/image";
-import { FiChevronLeft, FiChevronRight } from "react-icons/fi";
+import { FiChevronLeft, FiChevronRight, FiMenu, FiX } from "react-icons/fi";
 import { FaGithub, FaInstagram, FaJava, FaLinkedin, FaReact } from "react-icons/fa";
 import {
   SiExpress,
@@ -147,6 +147,8 @@ function TechBadge({ label }: { label: string }) {
 }
 
 function Navbar() {
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+
   return (
     <header className="sticky top-0 z-50 border-b border-white/10 bg-[#1a0308]/75 backdrop-blur-xl">
       <nav className="mx-auto flex w-full max-w-6xl items-center justify-between px-4 py-3 sm:px-6 lg:px-8">
@@ -154,7 +156,7 @@ function Navbar() {
           sgfrdgrln
         </a>
 
-        <ul className="flex items-center gap-0.5 sm:gap-1">
+        <ul className="hidden items-center gap-0.5 sm:gap-1 md:flex">
           {navLinks.map((link) => (
             <li key={link.href}>
               <a
@@ -169,11 +171,47 @@ function Navbar() {
 
         <a
           href="mailto:siegfriedgaerlan0213@gmail.com"
-          className="rounded-lg border border-blue-300/35 bg-blue-500/20 px-3 py-2 text-xs font-semibold text-blue-100 transition hover:bg-blue-500/35 sm:text-sm"
+          className="hidden rounded-lg border border-blue-300/35 bg-blue-500/20 px-3 py-2 text-xs font-semibold text-blue-100 transition hover:bg-blue-500/35 sm:text-sm md:inline-flex"
         >
           Contact
         </a>
+
+        <button
+          type="button"
+          aria-label={isMobileMenuOpen ? "Close menu" : "Open menu"}
+          aria-expanded={isMobileMenuOpen}
+          className="inline-flex h-9 w-9 items-center justify-center rounded-md border border-white/15 bg-white/5 text-zinc-100 transition hover:bg-white/10 md:hidden"
+          onClick={() => setIsMobileMenuOpen((open) => !open)}
+        >
+          {isMobileMenuOpen ? <FiX className="h-4 w-4" /> : <FiMenu className="h-4 w-4" />}
+        </button>
       </nav>
+
+      {isMobileMenuOpen ? (
+        <div className="border-t border-white/10 px-4 py-3 md:hidden">
+          <ul className="flex flex-col gap-1.5">
+            {navLinks.map((link) => (
+              <li key={link.href}>
+                <a
+                  href={link.href}
+                  className="block rounded-md px-3 py-2 text-sm font-medium text-zinc-200 transition hover:bg-white/10 hover:text-white"
+                  onClick={() => setIsMobileMenuOpen(false)}
+                >
+                  {link.label}
+                </a>
+              </li>
+            ))}
+          </ul>
+
+          <a
+            href="mailto:siegfriedgaerlan0213@gmail.com"
+            className="mt-3 inline-flex w-full items-center justify-center rounded-lg border border-blue-300/35 bg-blue-500/20 px-3 py-2 text-sm font-semibold text-blue-100 transition hover:bg-blue-500/35"
+            onClick={() => setIsMobileMenuOpen(false)}
+          >
+            Contact
+          </a>
+        </div>
+      ) : null}
     </header>
   );
 }
