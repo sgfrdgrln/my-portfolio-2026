@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from "react";
 import Image from "next/image";
+import { FiChevronLeft, FiChevronRight } from "react-icons/fi";
 import { FaGithub, FaInstagram, FaJava, FaLinkedin, FaReact } from "react-icons/fa";
 import {
   SiExpress,
@@ -138,7 +139,7 @@ function TechBadge({ label }: { label: string }) {
   const Icon = techIcons[label];
 
   return (
-    <span className="inline-flex items-center gap-1.5 rounded-full border border-white/15 bg-white/5 px-3 py-1 text-xs font-medium text-zinc-200 backdrop-blur-sm">
+    <span className="inline-flex items-center gap-1.5 rounded-full border border-white/15 bg-white/5 px-3 py-1 text-xs font-medium text-zinc-200 backdrop-blur-sm transition duration-200 hover:-translate-y-0.5 hover:border-white/35 hover:bg-white/12 hover:text-white">
       {Icon ? <Icon className="h-3.5 w-3.5 text-zinc-200" /> : null}
       <span>{label}</span>
     </span>
@@ -316,7 +317,7 @@ export default function Home() {
               >
                 <div className="mb-4 flex items-center gap-3">
                   <span
-                    className="inline-flex h-9 w-9 items-center justify-center rounded-full border border-blue-300/25 bg-blue-500/20 text-sm font-semibold text-blue-100"
+                    className="inline-flex h-9 w-9 shrink-0 items-center justify-center rounded-full border border-blue-300/25 bg-blue-500/20 text-sm font-semibold text-blue-100"
                     style={{ animationDelay: `${index * 90}ms` }}
                   >
                     {achievement.id}
@@ -374,9 +375,10 @@ export default function Home() {
                 event.stopPropagation();
                 goToPreviousImage();
               }}
-              className="absolute left-4 top-1/2 -translate-y-1/2 rounded-full border border-white/20 bg-white/10 px-3 py-2 text-sm font-semibold text-white"
+              className="absolute bottom-4 left-[calc(50%-3.25rem)] z-10 inline-flex h-9 w-9 items-center justify-center rounded-full border border-white/20 bg-black/55 text-white transition hover:bg-black/70 md:left-4 md:top-1/2 md:-translate-y-1/2 md:translate-x-0"
+              aria-label="Previous image"
             >
-              ←
+              <FiChevronLeft className="h-4 w-4" />
             </button>
             <button
               type="button"
@@ -384,9 +386,10 @@ export default function Home() {
                 event.stopPropagation();
                 goToNextImage();
               }}
-              className="absolute right-4 top-1/2 -translate-y-1/2 rounded-full border border-white/20 bg-white/10 px-3 py-2 text-sm font-semibold text-white"
+              className="absolute bottom-4 right-[calc(50%-3.25rem)] z-10 inline-flex h-9 w-9 items-center justify-center rounded-full border border-white/20 bg-black/55 text-white transition hover:bg-black/70 md:right-4 md:top-1/2 md:-translate-y-1/2 md:translate-x-0"
+              aria-label="Next image"
             >
-              →
+              <FiChevronRight className="h-4 w-4" />
             </button>
             <div
               className="relative h-[82vh] w-full max-w-5xl"
