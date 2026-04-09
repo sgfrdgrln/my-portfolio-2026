@@ -98,6 +98,14 @@ const projects: Project[] = [
     demoUrl: "#",
     githubUrl: "#",
   },
+
+  {
+    title: "ALPHA Website 2026",
+    description: "The official website of Alliance of Leading Programmers through Heuristic Adaptation. This project was a team-based project wherein my fellow development team developed the frontend while I built its backend.",
+    stack: ["Next.js", "MongoDB", "TypeScript", "Tailwind"],
+    demoUrl: "https://alpha-website-2026.vercel.app/",
+    githubUrl: "#"
+  },
 ];
 
 function GlassCard({ children, className = "" }: { children: React.ReactNode; className?: string }) {
